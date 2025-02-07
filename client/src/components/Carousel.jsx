@@ -5,12 +5,12 @@ const Carousel = () => {
 
   const cards =[
     {
-      "image": "public/icons/box.png",
+      "image": "icons/box.png",
       "headline": "Service 1",
       "description": "Reliable packaging and delivery services."
     },
     {
-      "image": "public/icons/heart.png",
+      "image": "/icons/heart.png",
       "headline": "Service 2",
       "description": "Premium quality products with great care."
     },
