@@ -10,32 +10,32 @@ const Carousel = () => {
       "description": "Reliable packaging and delivery services."
     },
     {
-      "image": "/icons/heart.png",
+      "image": "icons/heart.png",
       "headline": "Service 2",
       "description": "Premium quality products with great care."
     },
     {
-      "image": "public/icons/service.png",
+      "image": "icons/service.png",
       "headline": "Service 3",
       "description": "Efficient and fast service for all customers."
     },
     {
-      "image": "public/icons/ds.png",
+      "image": "icons/ds.png",
       "headline": "Service 4",
       "description": "Expert solutions tailored to your needs."
     },
     {
-      "image": "public/icons/customer-service.png",
+      "image": "icons/customer-service.png",
       "headline": "Service 5",
       "description": "24/7 customer support for any queries."
     },
     {
-      "image": "public/icons/server.png",
+      "image": "icons/server.png",
       "headline": "Service 6",
       "description": "Secure and high-performance cloud solutions."
     },
     {
-      "image": "public/icons/www.png",
+      "image": "icons/www.png",
       "headline": "Service 7",
       "description": "Reliable web hosting and domain services."
     },
