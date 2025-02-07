@@ -48,6 +48,7 @@ const Navbar = () => {
                 <button
                   className="hover:text-yellow-400 font-bold"
                   onMouseEnter={() => setOpenDropdown(index)}
+                   onClick={() => setOpenDropdown(openDropdown === index ? null : index)}
                 >
                   {item.name}
                 </button>
