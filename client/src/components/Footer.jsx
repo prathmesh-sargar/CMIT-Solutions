@@ -9,7 +9,7 @@ const Footer = () => {
       <div className="pb-6 col-span-full md:pb-0 md:col-span-6">
         <a href="#" className="flex justify-center space-x-3 md:justify-start">
         
-          <span className="self-center text-2xl font-semibold"><img src="public/logo.svg" alt="" /></span>
+          <span className="self-center text-2xl font-semibold"><img src="/logo.svg" alt="" /></span>
         </a>
       </div>
       <div className="col-span-6 text-center md:text-left md:col-span-3">
