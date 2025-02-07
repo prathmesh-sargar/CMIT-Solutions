@@ -20,7 +20,7 @@ const VideoBackground = () => {
         className="absolute top-0 left-0 w-full h-full object-cover"
         muted
         loop
-        src="public/bs.mp4" // replace with your video URL
+        src="bs.mp4" // replace with your video URL
       ></video>
       
       <button
