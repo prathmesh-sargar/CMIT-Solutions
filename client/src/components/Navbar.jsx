@@ -1,9 +1,11 @@
 import { useState, useEffect } from "react";
+import { useUser, UserButton, SignInButton, SignUpButton } from "@clerk/clerk-react";
 
 const Navbar = () => {
+  const { isSignedIn } = useUser();
   const [openDropdown, setOpenDropdown] = useState(null);
   const [navbarBg, setNavbarBg] = useState("bg-transparent");
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false); // New state for mobile menu
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -15,7 +17,6 @@ const Navbar = () => {
     };
 
     window.addEventListener("scroll", handleScroll);
-    
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
@@ -26,9 +27,9 @@ const Navbar = () => {
   };
 
   const menuItems = [
-    { name: "IT Services", subItems: ["Web Development", "App Development", "Cloud Computing", "Cybersecurity", "IT Consulting", "Software Testing", "DevOps Services", "Blockchain Development", "Technical Support"] },
-    { name: "IT Solutions", subItems: ["Solution 1", "Solution 2", "Solution 3", "Solution 4", "Solution 5"] },
-    { name: "Services", subItems: ["Service 1", "Service 2", "Service 3", "Service 4", "Service 5"] },
+    { name: "IT Services", subItems: ["Web Development", "App Development", "Cloud Computing"] },
+    { name: "IT Solutions", subItems: ["Solution 1", "Solution 2", "Solution 3"] },
+    { name: "Services", subItems: ["Service 1", "Service 2", "Service 3"] },
     { name: "Location", subItems: [] },
   ];
 
@@ -48,18 +49,14 @@ const Navbar = () => {
                 <button
                   className="hover:text-yellow-400 font-bold"
                   onMouseEnter={() => setOpenDropdown(index)}
-                   onClick={() => setOpenDropdown(openDropdown === index ? null : index)}
+                  onClick={() => setOpenDropdown(openDropdown === index ? null : index)}
                 >
                   {item.name}
                 </button>
                 {openDropdown === index && (
                   <div className="absolute left-0 mt-2 w-40 bg-white text-black shadow-lg rounded-md z-50 md:w-[200px]">
                     {item.subItems.map((subItem, subIndex) => (
-                      <a
-                        key={subIndex}
-                        href="#"
-                        className="block px-4 py-2 hover:bg-gray-200"
-                      >
+                      <a key={subIndex} href="#" className="block px-4 py-2 hover:bg-gray-200">
                         {subItem}
                       </a>
                     ))}
@@ -69,12 +66,18 @@ const Navbar = () => {
             ))}
           </div>
 
-          {/* Contact & Button (Desktop) */}
+          {/* Authentication (Desktop) */}
           <div className="hidden md:flex items-center space-x-4">
-            <p className="font-bold text-xl">(800) 399-2648</p>
-            <button className="bg-blue-500 rounded-lg px-4 py-1 font-bold text-white">
-              Contact Us
-            </button>
+            {isSignedIn ? <UserButton afterSignOutUrl="/" /> : (
+              <>
+                <SignInButton mode="modal">
+                  <button className="bg-blue-500 rounded-lg px-4 py-1 font-bold text-white">Login</button>
+                </SignInButton>
+                <SignUpButton mode="modal">
+                  <button className="bg-green-500 rounded-lg px-4 py-1 font-bold text-white">Sign Up</button>
+                </SignUpButton>
+              </>
+            )}
           </div>
 
           {/* Mobile Menu Button */}
@@ -116,6 +119,20 @@ const Navbar = () => {
               )}
             </div>
           ))}
+
+          {/* Authentication (Mobile) */}
+          <div className="mt-4 text-center">
+            {isSignedIn ? <UserButton afterSignOutUrl="/" /> : (
+              <>
+                <SignInButton mode="modal">
+                  <button className="bg-blue-500 rounded-lg px-4 py-1 font-bold text-white w-full">Login</button>
+                </SignInButton>
+                <SignUpButton mode="modal">
+                  <button className="bg-green-500 rounded-lg px-4 py-1 font-bold text-white w-full mt-2">Sign Up</button>
+                </SignUpButton>
+              </>
+            )}
+          </div>
         </div>
       )}
     </nav>
